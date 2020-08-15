@@ -2,12 +2,6 @@
     box-sizing: border-box;
 }
 
-// :root {
-//     --x-width: 10px;
-//     --o-width: 100px;
-//     --o-border-width: 01px;
-// }
-
 body {
     min-height: 100vh;
     margin: 0;
@@ -27,6 +21,9 @@ body {
     cursor: pointer;
 
     &__cell {
+        --x-width: 10px;
+        --o-width: 100px;
+        --o-border-width: 10px;
         border: 2px solid black;
         position: relative;
     }
@@ -45,8 +42,8 @@ body {
 %x {
     content: '';
     background-color: black;
-    width: var(--width);
-    height: calc(var(--width) * 10);
+    width: var(--x-width);
+    height: calc(var(--x-width) * 10);
     display: block;
     position: absolute;
     left: 50%;
@@ -62,24 +59,17 @@ body {
 }
 
 %o {
+    --width: 100px;
+    --border-width: 10px;
     content: '';
-    width: var(--width);
-    height: var(--width);
+    width: var(--o-width);
+    height: var(--o-width);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: var(--border-width) solid black;
+    border: var(--o-border-width) solid black;
     border-radius: 50%;
-}
-
-.x {
-    --width: 10px;
-}
-
-.o {
-    --width: 100px;
-    --border-width: 10px;
 }
 
 .x::before, .x::after {
@@ -98,10 +88,21 @@ body {
     @extend %o;
 }
 
-.grid__cell:not(.x):not(.o)::before {
-    @extend %o;
+.grid__cell:hover:not(.x):not(.o)::before, .grid__cell:hover:not(.x):not(.o)::after {
     // @extend %x;
-    background-color: red;
-    border-color: rgba(0, 0, 0, .3);
+    // background-color: rgb(170, 170, 170);
 }
+
+.grid__cell:hover:not(.x):not(.o)::before {
+    // @extend %x-before;
+    @extend %o;
+    border-color: rgb(170, 170, 170);
+
+}
+
+.grid__cell:hover:not(.x):not(.o)::after {
+    // @extend %x-after;
+}
+
+
 
