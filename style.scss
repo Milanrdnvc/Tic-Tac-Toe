@@ -1,0 +1,107 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+// :root {
+//     --x-width: 10px;
+//     --o-width: 100px;
+//     --o-border-width: 01px;
+// }
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 40vmax;
+    height: 40vmax;
+    cursor: pointer;
+
+    &__cell {
+        border: 2px solid black;
+        position: relative;
+    }
+    
+    &__cell:nth-child(2), &__cell:nth-child(5), &__cell:nth-child(8) {
+        border-left: none;
+        border-right: none;
+    }
+    
+    &__cell:nth-child(4), &__cell:nth-child(5), &__cell:nth-child(6) {
+        border-top: none;
+        border-bottom: none;
+    }
+}
+
+%x {
+    content: '';
+    background-color: black;
+    width: var(--width);
+    height: calc(var(--width) * 10);
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%; 
+}
+
+%x-before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+%x-after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+%o {
+    content: '';
+    width: var(--width);
+    height: var(--width);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: var(--border-width) solid black;
+    border-radius: 50%;
+}
+
+.x {
+    --width: 10px;
+}
+
+.o {
+    --width: 100px;
+    --border-width: 10px;
+}
+
+.x::before, .x::after {
+    @extend %x;
+}
+
+.x::before {
+    @extend %x-before;
+}
+
+.x::after {
+    @extend %x-after;
+}
+
+.o::before {
+    @extend %o;
+}
+
+.grid__cell:not(.x):not(.o)::before {
+    @extend %o;
+    // @extend %x;
+    background-color: red;
+    border-color: rgba(0, 0, 0, .3);
+}
+
