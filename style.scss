@@ -10,6 +10,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .grid {
@@ -21,9 +22,9 @@ body {
     cursor: pointer;
 
     &__cell {
-        --x-width: 10px;
-        --o-width: 100px;
-        --o-border-width: 10px;
+        --x-width: 15px;
+        --o-width: 150px;
+        --o-border-width: 15px;
         border: 2px solid black;
         position: relative;
     }
@@ -59,8 +60,6 @@ body {
 }
 
 %o {
-    --width: 100px;
-    --border-width: 10px;
     content: '';
     width: var(--o-width);
     height: var(--o-width);
@@ -89,20 +88,28 @@ body {
 }
 
 .grid__cell:hover:not(.x):not(.o)::before, .grid__cell:hover:not(.x):not(.o)::after {
-    // @extend %x;
-    // background-color: rgb(170, 170, 170);
+    @extend %x;
+    background-color: rgb(170, 170, 170);
 }
 
 .grid__cell:hover:not(.x):not(.o)::before {
-    // @extend %x-before;
-    @extend %o;
-    border-color: rgb(170, 170, 170);
+    @extend %x-before;
+    // @extend %o;
+    // border-color: rgb(170, 170, 170);
 
 }
 
 .grid__cell:hover:not(.x):not(.o)::after {
-    // @extend %x-after;
+    @extend %x-after;
 }
 
-
+@media (max-width: 1220px) {
+    .grid {
+        &__cell {
+            --x-width: 10px;
+            --o-width: 100px;
+            --o-border-width: 10px;
+        }
+    }
+}
 
