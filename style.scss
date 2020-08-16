@@ -19,6 +19,7 @@ body {
     grid-template-rows: repeat(3, 1fr);
     width: 40vmax;
     height: 40vmax;
+    position: relative;
 
     &__cell {
         --x-width: 15px;
@@ -138,6 +139,27 @@ body {
     align-items: center;
 }
 
+// .line {
+//     --line-transform-value: 16.666666666666666666666666666667%;
+//     --line2-transform-value: 50%;
+//     --line3-transform-value: 83.333333333333333333333333333333%;
+//     position: absolute;
+//     background-color: black;
+//     width: 5px;
+//     top: 0;
+//     bottom: 0;
+//     transform: scaleY(1);
+//     transition: transform .5s ease;
+//     transform-origin: top;
+// }
+
+// .line-active {
+//     transform: scaleY(1) rotate(-90deg);
+// }
+
+// .line {
+//     left: var(--line-transform-value);
+// }
 
 @media (max-width: 1220px) {
     .grid {
