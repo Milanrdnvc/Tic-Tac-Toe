@@ -19,7 +19,6 @@ body {
     grid-template-rows: repeat(3, 1fr);
     width: 40vmax;
     height: 40vmax;
-    cursor: pointer;
 
     &__cell {
         --x-width: 15px;
@@ -27,6 +26,7 @@ body {
         --o-border-width: 15px;
         border: 2px solid black;
         position: relative;
+        cursor: pointer;
     }
     
     &__cell:nth-child(2), &__cell:nth-child(5), &__cell:nth-child(8) {
@@ -71,6 +71,10 @@ body {
     border-radius: 50%;
 }
 
+.x, .o {
+    cursor: not-allowed;
+}
+
 .x::before, .x::after {
     @extend %x;
 }
@@ -87,20 +91,22 @@ body {
     @extend %o;
 }
 
-.grid__cell:hover:not(.x):not(.o)::before, .grid__cell:hover:not(.x):not(.o)::after {
+.x-turn:hover:not(.x):not(.o)::before, .x-turn:hover:not(.x):not(.o)::after {
     @extend %x;
     background-color: rgb(170, 170, 170);
 }
 
-.grid__cell:hover:not(.x):not(.o)::before {
+.x-turn:hover:not(.x):not(.o)::before {
     @extend %x-before;
-    // @extend %o;
-    // border-color: rgb(170, 170, 170);
-
 }
 
-.grid__cell:hover:not(.x):not(.o)::after {
+.x-turn:hover:not(.x):not(.o)::after {
     @extend %x-after;
+}
+
+.o-turn:hover:not(.x):not(.o)::before {
+    @extend %o;
+    border-color: rgb(170, 170, 170);
 }
 
 @media (max-width: 1220px) {
