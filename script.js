@@ -1,4 +1,5 @@
 const cells = document.querySelectorAll('.grid__cell');
+const endScreen = document.querySelector('.end-screen');
 let moves = 1;
 
 cells.forEach(cell => {
@@ -11,19 +12,22 @@ function determineTurn(e) {
         e.target.classList.add('x');
         switchTurnO();
         if (checkForWin(e.target)) {
-            document.write(checkForWin(e.target));
+            endScreen.classList.add('active');
+            endScreen.firstElementChild.innerText = checkForWin(e.target);
         }
 
     } else {
         e.target.classList.add('o');
         switchTurnX();
         if (checkForWin(e.target)) {
-            document.write(checkForWin(e.target));
+            endScreen.classList.add('active');
+            endScreen.firstElementChild.innerText = checkForWin(e.target);
         }
     }
     moves++;
-    if (moves > 9) {
-        document.write('draw');
+    if (moves > 9 && !checkForWin(e.target)) {
+        endScreen.classList.add('active');
+        endScreen.firstElementChild.innerText = 'Draw';
     }
 }
 
