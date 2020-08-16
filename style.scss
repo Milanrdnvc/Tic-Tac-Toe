@@ -109,6 +109,35 @@ body {
     border-color: rgb(170, 170, 170);
 }
 
+.end-screen {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .9);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 10rem;
+    color: white;
+    display: none;
+
+    button {
+        font-size: 5rem;
+        color: white;
+        background-color: black;
+        border: 2px solid white;
+        padding: .5rem 2rem;
+        cursor: pointer;
+    }
+}
+
+.end-screen.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
 @media (max-width: 1220px) {
     .grid {
         &__cell {
