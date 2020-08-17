@@ -63,7 +63,6 @@ function switchTurnO() {
 
 function checkForWin(currentClass) {
    let cellArray = [];
-   console.log(currentClass);
    return [WINNING_COMBINATIONS.some(combination => {
        if (combination.every((element, _, array) => {
            cellArray = array;
@@ -74,45 +73,21 @@ function checkForWin(currentClass) {
 }
 
 function drawLine(lineArray) {
-    console.log(lineArray);
-    // findIndex
-    if (JSON.stringify(lineArray) === JSON.stringify([0, 1, 2])) {
-        lines[0].classList.add('horizontal-lines');
-        lines[0].classList.add('active');
-    }
-
-    if (JSON.stringify(lineArray) === JSON.stringify([3, 4, 5])) {
-        lines[1].classList.add('horizontal-lines');
-        lines[1].classList.add('active');
-    }
-
-    if (JSON.stringify(lineArray) === JSON.stringify([6, 7, 8])) {
-        lines[2].classList.add('horizontal-lines');
-        lines[2].classList.add('active');
-    }
-
-    if (JSON.stringify(lineArray) === JSON.stringify([0, 3, 6])) {
-        lines[3].classList.add('vertical-lines');
-        lines[3].classList.add('active');
-    }
-
-    if (JSON.stringify(lineArray) === JSON.stringify([1, 4, 7])) {
-        lines[4].classList.add('vertical-lines');
-        lines[4].classList.add('active');
-    }
-
-    if (JSON.stringify(lineArray) === JSON.stringify([2, 5, 8])) {
-        lines[5].classList.add('vertical-lines');
-        lines[5].classList.add('active');
-    }
-
-    if (JSON.stringify(lineArray) === JSON.stringify([0, 4, 8])) {
-        lines[6].classList.add('diagonal-line1');
-        lines[6].classList.add('active');
-    }
-
-    if (JSON.stringify(lineArray) === JSON.stringify([2, 4, 6])) {
-        lines[7].classList.add('diagonal-line2');
-        lines[7].classList.add('active');
+    let index = WINNING_COMBINATIONS.findIndex(item => {
+        return JSON.stringify(item) === JSON.stringify(lineArray);
+    });
+    
+    if (index > -1 && index < 3) {
+        lines[index].classList.add('horizontal-lines');
+        lines[index].classList.add('active');
+    } else if (index > 2 && index < 6) {
+        lines[index].classList.add('vertical-lines');
+        lines[index].classList.add('active');
+    } else if (index === 6) {
+        lines[index].classList.add('diagonal-line1');
+        lines[index].classList.add('active');
+    } else {
+        lines[index].classList.add('diagonal-line2');
+        lines[index].classList.add('active');
     }
 }
