@@ -75,8 +75,5 @@ function checkForWin(currentClass) {
 
 function drawLine(lineArray) {
     console.log(lineArray);
-    lineArray.forEach(index => {
-        cells[index].style.backgroundColor = 'black';
-        cells[index].style.transition = 'background-color .1s ease';
-    });
+    
 }
