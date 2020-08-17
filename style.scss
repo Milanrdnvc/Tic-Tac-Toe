@@ -144,7 +144,7 @@ body {
     --line-width: 5px;
     position: absolute;
     background-color: black;
-    transition: transform .2s ease;
+    transition: transform .1s ease;
 }
 
 // Horizontal lines
@@ -169,7 +169,7 @@ body {
     top: 83.333333333333333333333333333333%;
 }
 
-.horizonal-lines.active {
+.horizontal-lines.active {
     transform: scaleX(1);
 }
 
@@ -204,7 +204,7 @@ body {
 .line:nth-child(16), .line:nth-child(17)  {
     width: var(--line-width);
     transform-origin: top center;
-    transition: height .2s ease;
+    transition: height .1s ease;
     height: 0;
 }
 
